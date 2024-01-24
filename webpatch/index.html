@@ -96,7 +96,7 @@
   </div>
   
 <div id="targetslider"></div>
-
+<div id="gainslider"></div>
   <script src="./patchDraw.js"></script>
   <script>
     // THIS CODE IS JUST FOR INTERNAL TESTES, YOU CAN REMOVE IT.
@@ -124,9 +124,12 @@
     // captureLibPdMessages();
   
     var slider2 = new Nexus.Slider('#targetslider')
-    
+     var gain = new Nexus.Slider('#gainslider')
     slider2.on('change',function(v) {
  sendToPureData("myfreq", v*1000.0);
+})
+  gain.on('change',function(v) {
+ sendToPureData("gain", v);
 })
   </script>
 </html>
