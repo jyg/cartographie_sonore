@@ -1,7 +1,10 @@
-# helloworld.io
-testing puredata on web (pd4web https://github.com/charlesneimog/pd4web)
+# cartographie sonore
+Projet de cartographie sonore on the web
+propulsée par 
+* pd4web https://github.com/charlesneimog/pd4web
+* p5.js https://p5js.org/
 
-visit site here https://jyg.github.io/helloworld.io/
+visit site here https://jyg.github.io/cartographie_sonore/
 
 ## Current status
 Those are attempts to add a gui using 2 differents frameworks
