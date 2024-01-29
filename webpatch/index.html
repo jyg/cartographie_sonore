@@ -19,6 +19,7 @@
     <meta name="twitter:card" content="" />
     <link rel="shortcut icon" href="favicon.ico" />
     <script src="./enable-threads.js"></script>
+ 
     <link
       href="https://fonts.googleapis.com/css?family=Karla:400,700"
       rel="stylesheet"
@@ -83,22 +84,44 @@
 
     <script src="./helpers.js"></script>
     <script src="./libpd.js"></script>
-      <script src="../Libs/NexusUI.js"></script>
+    <script src="../Libs/NexusUI.js"></script>
+    <script src="../Libs/p5.min.js"></script>
   </body>
   <br />
-  <div style="display: flex; align-items: center; justify-content: center">
-    <svg
-      id="pdPatch"
-      viewBox="0 0 150 150"
-      preserveAspectRatio="xMidYMin meet"
-      style="border: 0px solid black; border-radius: 5px"
-    ></svg>
-  </div>
+ 
   
 <div id="targetslider"></div>
 <div id="gainslider"></div>
-  <script src="./patchDraw.js"></script>
+
   <script>
+   // sendToPureData("myfreq", 100.0);
+        function setup()
+            {
+                createCanvas(512, 512,WEBGL);
+             
+            }
+
+            function draw()
+            {
+                background(200);
+                noFill();
+                   rotateY(frameCount * 0.01);
+                let size = mouseX;
+ //   sendToPureData("myfreq", size *10.0);
+                if(mouseX > width)
+                {
+                    size = width
+                }
+                let details = map(mouseY, 0, height, 1, 20);
+                //conversion to int as details takes ints
+                details = int(details)
+                sphere(size*0.5, details, details);
+                
+                }
+                
+    function mousePressed() {
+               sendToPureData("myfreq",mouseX * 10.0);
+                }
     // THIS CODE IS JUST FOR INTERNAL TESTES, YOU CAN REMOVE IT.
     // var originalConsoleLog = console.log;
     // console.log = function () {
