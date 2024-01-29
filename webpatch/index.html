@@ -94,11 +94,11 @@
 <div id="gainslider"></div>
 
   <script>
-   // sendToPureData("myfreq", 100.0);
+    
         function setup()
             {
                 createCanvas(512, 512,WEBGL);
-             
+              
             }
 
             function draw()
@@ -119,8 +119,11 @@
                 
                 }
                 
+   function mouseMoved() {
+    sendToPureData("myfreq",mouseX * 10.0);}
+                
     function mousePressed() {
-               sendToPureData("myfreq",mouseX * 10.0);
+              
                 }
     // THIS CODE IS JUST FOR INTERNAL TESTES, YOU CAN REMOVE IT.
     // var originalConsoleLog = console.log;
