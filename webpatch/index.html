@@ -94,18 +94,21 @@
 <div id="gainslider"></div>
 
   <script>
-    
-        function setup()
-            {
+        let spots = []; // array of sound objects
+        function setup()    {
                 createCanvas(512, 512,WEBGL);
-              
+                
+                 // Create objects
+                for (let i = 0; i < 50; i++) {
+                    spots.push(new Soundspot());
             }
+        }
 
-            function draw()
+        function draw()
             {
                 background(200);
                 noFill();
-                   rotateY(frameCount * 0.01);
+            //       rotateY(frameCount * 0.01);
                 let size = mouseX;
  //   sendToPureData("myfreq", size *10.0);
                 if(mouseX > width)
@@ -117,14 +120,38 @@
                 details = int(details)
                 sphere(size*0.5, details, details);
                 
+                fill(200);
+                for (let i = 0; i < spots.length; i++) {
+                    spots[i].move();
+                    spots[i].display();
                 }
+        }
                 
-   function mouseDragged() {
-    sendToPureData("myfreq",mouseX * 10.0);}
+                // Soundspot class
+        class Soundspot {
+            constructor() {
+                this.x = random(width)-width/2;
+                this.y = random(height)-height/2;
+                this.diameter = random(10, 30);
+                this.speed = 1;
+            }
+
+            move() {
+                this.x += random(-this.speed, this.speed);
+                this.y += random(-this.speed, this.speed);
+            }
+
+            display() {
+                ellipse(this.x, this.y, this.diameter, this.diameter);
+            }
+        }
                 
-    function mousePressed() {
-              
-                }
+        function mouseDragged() {
+            sendToPureData("myfreq",mouseX * 10.0);
+        }
+                
+        function mousePressed() {
+        }
     // THIS CODE IS JUST FOR INTERNAL TESTES, YOU CAN REMOVE IT.
     // var originalConsoleLog = console.log;
     // console.log = function () {
